@@ -1,0 +1,121 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: 'Awesome Car API'
+  description: 'to do'
+
+host: car.example.com
+basePath: /api/v1
+schemes:
+  - https
+
+tags:
+  - name: Awesome car API
+    description: 'Awesome car API'
+    externalDocs:
+      description: More at
+
+paths:
+  /preferences:
+    get:
+      tags:
+        - Awesome car API
+      summary: 'Get user preferences settings'
+      produces:
+        - application/json
+      description:
+        'Get preferences settings for specified authenticated user.'
+      parameters:
+        - name: Authorization
+          type: string
+          in: header
+          required: true
+          description: 'Bearer <oauth2 token>'
+      responses:
+        200:
+          description: 'Get user preferences.'
+          schema:
+            $ref: '#/definitions/Preferences'
+        400:
+          description: 'Invalid request.'
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: 'Access Error'
+          schema:
+            $ref: '#/definitions/SecurityError'
+        500:
+          description: 'Error response.'
+          schema:
+            $ref: '#/definitions/Error'
+    patch:
+      tags:
+        - User Preferences API
+      summary: 'Update user preferences settings'
+      produces:
+        - application/json
+      description:
+        'Update preferences settings for specified autherticated user'
+      parameters:
+        - name: Authorization
+          type: string
+          in: header
+          required: true
+          description: 'Bearer <oauth2 token>'
+        - name: Settings
+          in: body
+          required: true
+          description: 'Settings type'
+          schema:
+            $ref: '#/definitions/Preferences'
+      responses:
+        200:
+          description: 'Update completed successfully.'
+        400:
+          description: 'Invalid request.'
+          schema:
+            $ref: '#/definitions/Error'
+        401:
+          description: 'Access Error.'
+          schema:
+            $ref: '#/definitions/SecurityError'
+        500:
+          description: 'Error response'
+          schema:
+            $ref: '#/definitions/Error'
+definitions:
+  Preferences:
+    type: object
+    description: 'Preferences to be defined by consumer party.'
+    properties:
+      "some.preference.name-1":
+        type: string
+        description: The default timespan for events in the swimlanes
+        format: string
+        example: 'any string value for preference. E.g. `"true"`, or `{"mydata":"data"}`'
+      "other.preference.name-2":
+        type: string
+        description: The default timespan for events in the swimlanes
+        format: string
+        example: 'any string value for preference. E.g. `"true"`, or `{"mydata":"data"}`'
+  SecurityError:
+    type: object
+    properties:
+      error:
+        type: string
+        example: 'invalid_token'
+      error_description:
+        type: string
+        example: 'Invalid token'
+  Error:
+    type: object
+    properties:
+      code:
+        type: string
+        example: '###.####'
+      message:
+        type: string
+        example: 'Error message text'
+      requestId:
+        type: string
+        example: 'aa54cfb6-6664-4227-8553-8186a34829d6'
