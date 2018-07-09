@@ -1,5 +1,5 @@
 <html>
 <body>
-    <h2>MVN REST API</h2>
+    <h2>NBA Player API</h2>
 </body>
 </html>

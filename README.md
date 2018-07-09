@@ -1,4 +1,4 @@
-# MVN-REST
+# NBA-Player-API
 
 RESTful API built with MVN
 
