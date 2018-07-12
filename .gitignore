@@ -1,4 +1,8 @@
+## Directory-based project format:
 .idea
 
 ### Maven template
 target/
+
+# IntelliJ
+*.iml
