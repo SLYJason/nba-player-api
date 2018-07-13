@@ -1,4 +1,4 @@
-package org.github.slyjason.player.model;
+package model;
 
 public class Greeting {
     private final long id;
