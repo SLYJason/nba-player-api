@@ -20,7 +20,7 @@ public class PlayerController {
   @RequestMapping(value = "/player/{id}", method = RequestMethod.GET)
   public Player getPlayer(@PathVariable(value="id") final int id) {
     LOG.info("Incoming player id is: {}", id);
-    return new Player();
+    return new Player(id, "Lebron James", "Cavs");
   }
 }
 

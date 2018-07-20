@@ -7,6 +7,12 @@ public class Player {
   private String name;
   private String team;
 
+  public Player(int id, String name, String team) {
+    this.id = id;
+    this.name = name;
+    this.team = team;
+  }
+
   // Player id
   @JsonProperty("id")
   public int getId() {
